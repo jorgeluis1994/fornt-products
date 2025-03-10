@@ -1,6 +1,8 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ViewChild } from '@angular/core';
 import { ProductsService } from '../../services/products.service';
 import { Product } from '../../models/Producto';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-list-products',
@@ -9,6 +11,10 @@ import { Product } from '../../models/Producto';
   styleUrl: './list-products.component.css'
 })
 export class ListProductsComponent implements OnInit {
+
+  public dataSource!: MatTableDataSource<Product>;
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   public products: Product[] = [];
 
@@ -21,9 +27,12 @@ export class ListProductsComponent implements OnInit {
       {
         next:(products)=> {
           this.products = products;
+          this.dataSource = new MatTableDataSource(this.products);
+          this.dataSource.paginator = this.paginator;
 
         },
         error(err) {
+          console.error('Error al obtener productos', err);
 
         },
       }

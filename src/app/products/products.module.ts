@@ -15,6 +15,10 @@ import { ProductsService } from './services/products.service';
 // Importaciones de Angular Material
 
 import { MatButtonModule } from '@angular/material/button';
+import { MatPaginatorModule } from '@angular/material/paginator';
+
+import { MatDialogModule } from '@angular/material/dialog';
+
 
 
 @NgModule({
@@ -26,7 +30,7 @@ import { MatButtonModule } from '@angular/material/button';
   imports: [
     CommonModule,
     ProductsRoutingModule,
-    MatTableModule,HttpClientModule,MatButtonModule
+    MatTableModule,HttpClientModule,MatButtonModule,MatPaginatorModule,MatDialogModule
   ],
   providers:[ProductsService]
 })
