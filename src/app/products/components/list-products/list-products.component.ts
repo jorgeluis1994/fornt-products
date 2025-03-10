@@ -4,6 +4,9 @@ import { Product } from '../../models/Producto';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 
+import { MatDialog } from '@angular/material/dialog';
+import { CreateProductsComponent } from '../create-products/create-products.component';
+
 @Component({
   selector: 'app-list-products',
   standalone: false,
@@ -21,6 +24,8 @@ export class ListProductsComponent implements OnInit {
   private readonly _productService = inject(ProductsService);
 
   displayedColumns: string[] = ['id', 'name', 'price', 'category', 'actions'];
+
+  constructor(public dialog: MatDialog) {}
 
   ngOnInit(): void {
     this._productService.getAllProducts().subscribe(
@@ -52,6 +57,13 @@ export class ListProductsComponent implements OnInit {
   addProduct() {
     console.log('Agregar nuevo producto');
     // Aquí puedes abrir un formulario modal para agregar
+  }
+
+  //abrir creador de producto
+
+  openProduct(){
+    const dialogRef = this.dialog.open(CreateProductsComponent);
+
   }
 
 }

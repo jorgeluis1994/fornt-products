@@ -1,6 +1,8 @@
 <!-- <p style="text-align: center">Lista de Productos</p> -->
 
 <h3 style="text-align: center;">Lista de Productos</h3>
+<button mat-raised-button color="primary" (click)="openProduct()">Crear Producto</button>
+
 
 <!-- list-products.component.html -->
 <table mat-table [dataSource]="products">
@@ -32,6 +34,8 @@
   <ng-container matColumnDef="actions">
     <th mat-header-cell *matHeaderCellDef>Acciones</th>
     <td mat-cell *matCellDef="let product">
+      <!-- Botón para crear un producto -->
+
       <button mat-button color="primary" (click)="editProduct(product)">
         Editar
       </button>

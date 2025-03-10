@@ -14,10 +14,19 @@ import { ProductsService } from './services/products.service';
 
 // Importaciones de Angular Material
 
-import { MatButtonModule } from '@angular/material/button';
+
 import { MatPaginatorModule } from '@angular/material/paginator';
 
+
+
+// Angular Material Modules
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
+
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 
 
@@ -30,7 +39,15 @@ import { MatDialogModule } from '@angular/material/dialog';
   imports: [
     CommonModule,
     ProductsRoutingModule,
-    MatTableModule,HttpClientModule,MatButtonModule,MatPaginatorModule,MatDialogModule
+    MatTableModule,
+    HttpClientModule,
+    MatButtonModule,
+    MatPaginatorModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule
+
   ],
   providers:[ProductsService]
 })

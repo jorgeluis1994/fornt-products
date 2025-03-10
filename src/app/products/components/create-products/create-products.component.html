@@ -1,1 +1,40 @@
-<p>create-products works!</p>
+<h2 mat-dialog-title>Crear Producto</h2>
+
+<form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+  <mat-dialog-content>
+    <!-- Campo Nombre -->
+    <mat-form-field appearance="fill">
+      <mat-label>Nombre</mat-label>
+      <input matInput formControlName="name" required />
+      <mat-error *ngIf="productForm.controls['name']?.hasError('required')">
+        El nombre es requerido
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Campo Precio -->
+    <mat-form-field appearance="fill">
+      <mat-label>Precio</mat-label>
+      <input matInput formControlName="price" required type="number" />
+      <mat-error *ngIf="productForm.controls['price']?.hasError('required')">
+        El precio es requerido
+      </mat-error>
+      <mat-error *ngIf="productForm.controls['price']?.hasError('min')">
+        El precio debe ser mayor a 0
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Campo Categoría -->
+    <mat-form-field appearance="fill">
+      <mat-label>Categoría</mat-label>
+      <input matInput formControlName="category" required />
+      <mat-error *ngIf="productForm.controls['category']?.hasError('required')">
+        La categoría es requerida
+      </mat-error>
+    </mat-form-field>
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Cancelar</button>
+    <button mat-button color="primary" type="submit" [disabled]="productForm.invalid">Crear</button>
+  </mat-dialog-actions>
+</form>
