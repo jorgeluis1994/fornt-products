@@ -1,0 +1,30 @@
+<!-- <p>auth works!</p> -->
+
+<!-- @for (item of products; track $index) {
+<div>
+  <li>{{ item.id }} {{ item.category }} {{ item.description }}</li>
+</div>
+
+} -->
+
+<form [formGroup]="loginForm" (ngSubmit)="login()">
+  <div>
+    <label for="login">Usuario:</label>
+    <input id="login" formControlName="login" type="text" placeholder="Ingrese su login" />
+    <div *ngIf="loginForm.get('login')?.invalid && loginForm.get('login')?.touched">
+      <small *ngIf="loginForm.get('login')?.hasError('required')">El login es obligatorio.</small>
+    </div>
+  </div>
+
+  <div>
+    <label for="password_user">Contraseña:</label>
+    <input id="password_user" formControlName="password_user" type="password_user" placeholder="Ingrese su contraseña" />
+    <div *ngIf="loginForm.get('password_user')?.invalid && loginForm.get('password_user')?.touched">
+      <small *ngIf="loginForm.get('password_user')?.hasError('required')">La contraseña es obligatoria.</small>
+      <small *ngIf="loginForm.get('password_user')?.hasError('minlength')">La contraseña debe tener al menos 6 caracteres.</small>
+    </div>
+  </div>
+
+  <button type="submit" [disabled]="loginForm.invalid">Iniciar sesión</button>
+</form>
+
