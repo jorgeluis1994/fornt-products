@@ -24,9 +24,13 @@ export class CreateProductsComponent {
   ) {
 
     this.productForm = new FormGroup({
-      name: new FormControl('', [Validators.required]),
-      price: new FormControl('', [Validators.required, Validators.min(0)]),
-      category: new FormControl('', [Validators.required])
+      nombre: new FormControl('', [Validators.required]),
+      precio: new FormControl('', [Validators.required, Validators.min(0)]),
+      categoria: new FormControl('', [Validators.required]),
+      imagen: new FormControl('', [Validators.required]),
+      descripcion: new FormControl('', [Validators.required])
+
+
     });
 
 

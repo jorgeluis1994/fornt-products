@@ -21,6 +21,8 @@ export class ProductsService {
   }
 
   createProduct(product: Product): Observable<void> {
+
+    debugger
     return this._http.post<void>('http://localhost:5217/api/Productos/save',product);
   }
 }
