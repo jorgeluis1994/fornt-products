@@ -22,7 +22,7 @@ export class TransactionsService {
     }
 
     createTransaction(transaction: Transaction): Observable<void> {
-      return this._http.post<void>('http://localhost:5217/api/Transacciones/save', transaction);
+      return this._http.post<void>('http://localhost:5217/api/Transaccion/save', transaction);
     }
 
     updateTransaction(transaction: Transaction): Observable<void> {
