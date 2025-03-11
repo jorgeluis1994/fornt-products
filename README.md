@@ -26,6 +26,26 @@ For a complete list of available schematics (such as `components`, `directives`,
 ng generate --help
 ```
 
+----------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------
+Frontend (Angular 19):  https://github.com/jorgeluis1994/fornt-products.git
+Instalar dependencias en el frontend:
+
+En la carpeta del proyecto Angular, ejecuta:
+
+npm install
+
+Levantar el frontend:
+
+En la carpeta del proyecto Angular, ejecuta:
+ng serve
+![trans](https://github.com/user-attachments/assets/3ee6bf6a-0309-43c7-bad4-3c35aa210603)
+
+![product](https://github.com/user-attachments/assets/07d97b64-1712-4bb9-a85d-23b7bdd512a1)
+
+
+
+
 ## Building
 
 To build the project run:
