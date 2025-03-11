@@ -43,7 +43,10 @@ ng serve
 
 ![product](https://github.com/user-attachments/assets/07d97b64-1712-4bb9-a85d-23b7bdd512a1)
 
+![modal](https://github.com/user-attachments/assets/cc29d273-1a27-46a2-9a8f-1906d75fc25d)
 
+
+![Screenshot 2025-03-10 232532](https://github.com/user-attachments/assets/3500a5ac-2b93-4a80-9ec8-74253c628b24)
 
 
 ## Building
