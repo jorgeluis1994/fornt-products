@@ -7,11 +7,7 @@ import { ListTransactionsComponent } from './components/list-transactions/list-t
 import { CreateTransactionsComponent } from './components/create-transactions/create-transactions.component';
 // Importaciones de Angular Material
 
-
 import { MatPaginatorModule } from '@angular/material/paginator';
-
-
-
 
 // Angular Material Modules
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -28,6 +24,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 
 import { MatIconModule } from '@angular/material/icon';
+import { ProductsService } from '../products/services/products.service';
 
 
 @NgModule({
@@ -54,6 +51,6 @@ import { MatIconModule } from '@angular/material/icon';
 
   ],
 
-    providers:[TransactionsService]
+    providers:[TransactionsService,ProductsService]
 })
 export class TransactionsModule { }
