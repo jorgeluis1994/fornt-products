@@ -27,8 +27,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 
-
-
+import { MatIconModule } from '@angular/material/icon';
 
 
 @NgModule({
@@ -50,7 +49,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatPaginatorModule,
     MatTableModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatIconModule
 
   ],
 

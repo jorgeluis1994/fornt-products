@@ -59,7 +59,13 @@
     </mat-error>
   </mat-form-field>
 
-  <button mat-button color="primary" type="submit" [disabled]="transactionForm.invalid">
-    {{ isEditMode ? 'Actualizar Transacción' : 'Crear Transacción' }}
-  </button>
+  <mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">
+      <mat-icon>cancel</mat-icon> Cancelar
+    </button>
+    <button mat-button color="primary" type="submit">
+      <mat-icon>check</mat-icon> Crear
+    </button>
+  </mat-dialog-actions>
+
 </form>
