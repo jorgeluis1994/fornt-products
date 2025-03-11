@@ -27,7 +27,7 @@ export class ProductsService {
 
   updateProduct(product: Product): Observable<void> {
 
-    debugger
+
     return this._http.put<void>(`http://localhost:5217/api/Producto/${product.id}`, product);
   }
 

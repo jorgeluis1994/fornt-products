@@ -37,7 +37,7 @@ export class ListProductsComponent implements OnInit {
   }
 
   editProduct(product: Product) {
-    debugger
+
 
     console.log('Id producto:', product.id);
 

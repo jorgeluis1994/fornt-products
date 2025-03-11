@@ -41,7 +41,7 @@ export class CreateProductsComponent {
 
 
     });
-    debugger
+
 
 
     if (this.data) {
