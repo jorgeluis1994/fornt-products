@@ -17,12 +17,11 @@ export class ProductsService {
   }
 
   deleteProduct(id: number): Observable<void> {
-    return this._http.delete<void>(`${'http://localhost:5217/api/Productoss'}/${id}`);
+    return this._http.delete<void>(`${'http://localhost:5217/api/Productos'}/${id}`);
   }
 
   createProduct(product: Product): Observable<void> {
 
-    debugger
     return this._http.post<void>('http://localhost:5217/api/Productos/save',product);
   }
 }

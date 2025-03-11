@@ -6,6 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 
 import { MatDialog } from '@angular/material/dialog';
 import { CreateProductsComponent } from '../create-products/create-products.component';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-list-products',
@@ -14,6 +15,8 @@ import { CreateProductsComponent } from '../create-products/create-products.comp
   styleUrl: './list-products.component.css'
 })
 export class ListProductsComponent implements OnInit {
+
+   private readonly _toastrService = inject(ToastrService);
 
   public dataSource!: MatTableDataSource<Product>;
 
@@ -28,6 +31,16 @@ export class ListProductsComponent implements OnInit {
   constructor(public dialog: MatDialog) {}
 
   ngOnInit(): void {
+    this.getAllProducts();
+
+
+  }
+
+  editProduct(product: Product) {
+    console.log('Editar:', product);
+  }
+
+  getAllProducts(){
     this._productService.getAllProducts().subscribe(
       {
         next:(products)=> {
@@ -42,27 +55,35 @@ export class ListProductsComponent implements OnInit {
         },
       }
     )
+
   }
 
-  editProduct(product: Product) {
-    console.log('Editar:', product);
+  deleteProduct(id: number) {
+    this._productService.deleteProduct(id).subscribe(
+      {
+        next:(value)=> {
+
+          console.log(value);
+          this._toastrService.success('Producto eliminado con éxito');
+          this.getAllProducts();
+
+
+        },
+      }
+    )
   }
-
-  // deleteProduct(id: number) {
-  //   this._productService.deleteProduct(id).subscribe(() => {
-  //     this.products = this.products.filter(p => p.id !== id);
-  //   });
-  // }
-
-  addProduct() {
-    console.log('Agregar nuevo producto');
-    // Aquí puedes abrir un formulario modal para agregar
-  }
-
-  //abrir creador de producto
 
   openProduct(){
     const dialogRef = this.dialog.open(CreateProductsComponent);
+
+    dialogRef.afterClosed().subscribe({
+      next:(value)=> {
+        if(value){
+          this.getAllProducts();
+        }
+
+      },
+    })
 
   }
 

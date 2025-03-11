@@ -4,6 +4,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Product } from '../../models/Producto';
 import { ProductsService } from '../../services/products.service';
+import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-create-products',
@@ -15,8 +17,12 @@ export class CreateProductsComponent {
 
   // Definir el formulario reactivo
   productForm!: FormGroup;
+  //Modo de edicion o creacion
+  isEditMode = false;
 
   private readonly _productService = inject(ProductsService);
+  private readonly _toastrService = inject(ToastrService);
+
 
   constructor(
     private dialogRef: MatDialogRef<CreateProductsComponent>,
@@ -24,6 +30,8 @@ export class CreateProductsComponent {
   ) {
 
     this.productForm = new FormGroup({
+
+
       nombre: new FormControl('', [Validators.required]),
       precio: new FormControl('', [Validators.required, Validators.min(0)]),
       categoria: new FormControl('', [Validators.required]),
@@ -55,6 +63,10 @@ export class CreateProductsComponent {
       this._productService.createProduct(newProduct).subscribe({
         next: (value) => {
           this.dialogRef.close(value);
+          // Mostrar notificación de éxito
+        this._toastrService.success('Producto creado con éxito');
+
+          this._productService.getAllProducts();
         },
         error: (err) => {
           console.log('Error al crear el producto', err);
