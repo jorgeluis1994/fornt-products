@@ -26,13 +26,13 @@ export class ListProductsComponent implements OnInit {
 
   private readonly _productService = inject(ProductsService);
 
-  displayedColumns: string[] = ['id', 'name', 'price', 'category', 'actions'];
+  displayedColumns: string[] = ['id', 'name', 'price','stock', 'category', 'actions'];
 
   constructor(public dialog: MatDialog) {}
 
   ngOnInit(): void {
-    this.getAllProducts();
 
+    this.getAllProducts();
 
   }
 
@@ -45,6 +45,8 @@ export class ListProductsComponent implements OnInit {
       {
         next:(products)=> {
           this.products = products;
+          console.log(this.products);
+
           this.dataSource = new MatTableDataSource(this.products);
           this.dataSource.paginator = this.paginator;
 
