@@ -46,6 +46,13 @@ export class ListProductsComponent implements OnInit {
       data: product
 
     });
+    dialogRef.afterClosed().subscribe({
+      next:(value)=> {
+        if(value){
+          this.getAllProducts();
+        }
+      },
+    })
   }
 
   getAllProducts(){

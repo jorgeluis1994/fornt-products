@@ -81,6 +81,7 @@ export class CreateProductsComponent {
         next: (value) => {
           this.dialogRef.close(value);
           this._toastrService.success('Producto actualizado con éxito');
+          debugger
           this._productService.getAllProducts();
         },
         error: (err) => {
