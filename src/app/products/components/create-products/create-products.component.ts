@@ -44,11 +44,19 @@ export class CreateProductsComponent {
 
 
     if (this.data) {
+
       this.productForm.setValue({
-        name: this.data.name || '',
-        price: this.data.price || 0,
-        category: this.data.category || ''
+        nombre: this.data.nombre || '',
+        precio: this.data.precio || 0,
+        categoria: this.data.categoria || '',
+        imagen: this.data.imagen || '',
+        descripcion: this.data.descripcion || '',
+        stock: this.data.stock || ''
+
       });
+
+      console.log(this.productForm.value);
+
     }
   }
 

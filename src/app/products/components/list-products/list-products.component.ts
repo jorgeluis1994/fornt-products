@@ -37,7 +37,14 @@ export class ListProductsComponent implements OnInit {
   }
 
   editProduct(product: Product) {
-    console.log('Editar:', product);
+
+    console.log('Id producto:', product.id);
+
+    const dialogRef = this.dialog.open(CreateProductsComponent,{
+      width: '400px',
+      data: product
+
+    });
   }
 
   getAllProducts(){
@@ -76,14 +83,15 @@ export class ListProductsComponent implements OnInit {
   }
 
   openProduct(){
-    const dialogRef = this.dialog.open(CreateProductsComponent);
+    const dialogRef = this.dialog.open(CreateProductsComponent,{
+      width: '400px',
+    });
 
     dialogRef.afterClosed().subscribe({
       next:(value)=> {
         if(value){
           this.getAllProducts();
         }
-
       },
     })
 
