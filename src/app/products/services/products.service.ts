@@ -24,4 +24,11 @@ export class ProductsService {
 
     return this._http.post<void>('http://localhost:5217/api/Producto/save',product);
   }
+
+  updateProduct(product: Product): Observable<void> {
+
+    debugger
+    return this._http.put<void>(`http://localhost:5217/api/Producto/${product.id}`, product);
+  }
+
 }

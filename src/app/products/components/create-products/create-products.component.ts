@@ -41,6 +41,7 @@ export class CreateProductsComponent {
 
 
     });
+    debugger
 
 
     if (this.data) {
@@ -67,14 +68,30 @@ export class CreateProductsComponent {
 
 
   onSubmit(): void {
-    if (this.productForm.valid) {
-      const newProduct: Product = this.productForm.value;
+    if (this.productForm.invalid) {
+      return;
+    }
+
+    const newProduct: Product = { ...this.productForm.value };
+
+    if (this.data) {
+      newProduct.id = this.data.id;
+
+      this._productService.updateProduct(newProduct).subscribe({
+        next: (value) => {
+          this.dialogRef.close(value);
+          this._toastrService.success('Producto actualizado con éxito');
+          this._productService.getAllProducts();
+        },
+        error: (err) => {
+          console.log('Error al actualizar el producto', err);
+        }
+      });
+    } else {
       this._productService.createProduct(newProduct).subscribe({
         next: (value) => {
           this.dialogRef.close(value);
-          // Mostrar notificación de éxito
-        this._toastrService.success('Producto creado con éxito');
-
+          this._toastrService.success('Producto creado con éxito');
           this._productService.getAllProducts();
         },
         error: (err) => {
@@ -83,6 +100,7 @@ export class CreateProductsComponent {
       });
     }
   }
+
 
 
 
