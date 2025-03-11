@@ -16,7 +16,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class ListProductsComponent implements OnInit {
 
-   private readonly _toastrService = inject(ToastrService);
+  private readonly _toastrService = inject(ToastrService);
 
   public dataSource!: MatTableDataSource<Product>;
 
