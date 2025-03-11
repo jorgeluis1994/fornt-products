@@ -50,6 +50,19 @@
       </mat-error>
     </mat-form-field>
 
+    <!-- Campo Stock -->
+    <mat-form-field appearance="fill">
+      <mat-label>Stock</mat-label>
+      <input matInput formControlName="stock" type="number" required />
+      <mat-error *ngIf="productForm.controls['stock']?.hasError('required')">
+        El stock es requerido
+      </mat-error>
+      <mat-error *ngIf="productForm.controls['stock']?.hasError('min')">
+        El stock debe ser mayor o igual a 0
+      </mat-error>
+    </mat-form-field>
+
+
   </mat-dialog-content>
 
 

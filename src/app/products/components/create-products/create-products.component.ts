@@ -36,7 +36,8 @@ export class CreateProductsComponent {
       precio: new FormControl('', [Validators.required, Validators.min(0)]),
       categoria: new FormControl('', [Validators.required]),
       imagen: new FormControl('', [Validators.required]),
-      descripcion: new FormControl('', [Validators.required])
+      descripcion: new FormControl('', [Validators.required]),
+      stock: new FormControl(0, [Validators.required, Validators.min(0)])
 
 
     });
