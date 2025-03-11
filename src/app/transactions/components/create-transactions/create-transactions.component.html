@@ -1,79 +1,65 @@
-<h2 mat-dialog-title>Crear Transacción</h2>
-
 <form [formGroup]="transactionForm" (ngSubmit)="onSubmit()">
-  <mat-dialog-content>
-    <!-- Campo Nombre -->
-    <mat-form-field appearance="fill">
-      <mat-label>Nombre</mat-label>
-      <input matInput formControlName="nombre" required />
-      <mat-error *ngIf="transactionForm.controls['nombre']?.hasError('required')">
-        El nombre es requerido
-      </mat-error>
-    </mat-form-field>
 
-    <!-- Campo Precio -->
-    <mat-form-field appearance="fill">
-      <mat-label>Precio</mat-label>
-      <input matInput formControlName="precio" required type="number" />
-      <mat-error *ngIf="transactionForm.controls['precio']?.hasError('required')">
-        El precio es requerido
-      </mat-error>
-      <mat-error *ngIf="transactionForm.controls['precio']?.hasError('min')">
-        El precio debe ser mayor a 0
-      </mat-error>
-    </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Fecha</mat-label>
+    <input matInput [matDatepicker]="picker" formControlName="fecha" required />
+    <mat-datepicker #picker></mat-datepicker>
+    <mat-error *ngIf="transactionForm.controls['fecha']?.hasError('required')">
+      La fecha es requerida
+    </mat-error>
+  </mat-form-field>
 
-    <!-- Campo Categoría -->
-    <mat-form-field appearance="fill">
-      <mat-label>Categoría</mat-label>
-      <input matInput formControlName="categoria" required />
-      <mat-error *ngIf="transactionForm.controls['categoria']?.hasError('required')">
-        La categoría es requerida
-      </mat-error>
-    </mat-form-field>
 
-    <!-- Campo Imagen -->
-    <mat-form-field appearance="fill">
-      <mat-label>Imagen</mat-label>
-      <input matInput formControlName="imagen" required />
-      <mat-error *ngIf="transactionForm.controls['imagen']?.hasError('required')">
-        La imagen es requerida
-      </mat-error>
-    </mat-form-field>
 
-    <!-- Campo Descripción -->
-    <mat-form-field appearance="fill">
-      <mat-label>Descripción</mat-label>
-      <input matInput formControlName="descripcion" required />
-      <mat-error *ngIf="transactionForm.controls['descripcion']?.hasError('required')">
-        La descripción es requerida
-      </mat-error>
-    </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Tipo</mat-label>
+    <input matInput formControlName="tipo" required />
+    <mat-error *ngIf="transactionForm.controls['tipo']?.hasError('required')">
+      El tipo es requerido
+    </mat-error>
+  </mat-form-field>
 
-    <!-- Campo Tipo -->
-    <mat-form-field appearance="fill">
-      <mat-label>Tipo de transacción</mat-label>
-      <mat-select formControlName="tipo" required>
-        <mat-option value="compra">Compra</mat-option>
-        <mat-option value="venta">Venta</mat-option>
-      </mat-select>
-      <mat-error *ngIf="transactionForm.controls['tipo']?.hasError('required')">
-        El tipo de transacción es requerido
-      </mat-error>
-    </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>ID Producto</mat-label>
+    <input matInput formControlName="productoId" required type="number" />
+    <mat-error *ngIf="transactionForm.controls['productoId']?.hasError('required')">
+      El ID de producto es requerido
+    </mat-error>
+  </mat-form-field>
 
-    <!-- Campo Cantidad -->
-    <mat-form-field appearance="fill">
-      <mat-label>Cantidad</mat-label>
-      <input matInput formControlName="cantidad" required type="number" />
-      <mat-error *ngIf="transactionForm.controls['cantidad']?.hasError('required')">
-        La cantidad es requerida
-      </mat-error>
-    </mat-form-field>
-  </mat-dialog-content>
+  <mat-form-field appearance="fill">
+    <mat-label>Cantidad</mat-label>
+    <input matInput formControlName="cantidad" required type="number" />
+    <mat-error *ngIf="transactionForm.controls['cantidad']?.hasError('required')">
+      La cantidad es requerida
+    </mat-error>
+  </mat-form-field>
 
-  <mat-dialog-actions>
-    <button mat-button (click)="onNoClick()">Cancelar</button>
-    <button mat-button color="primary" type="submit" [disabled]="transactionForm.invalid">Crear</button>
-  </mat-dialog-actions>
+  <mat-form-field appearance="fill">
+    <mat-label>Precio Unitario</mat-label>
+    <input matInput formControlName="precioUnitario" required type="number" />
+    <mat-error *ngIf="transactionForm.controls['precioUnitario']?.hasError('required')">
+      El precio unitario es requerido
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Precio Total</mat-label>
+    <input matInput formControlName="precioTotal" required type="number" />
+    <mat-error *ngIf="transactionForm.controls['precioTotal']?.hasError('required')">
+      El precio total es requerido
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Detalle</mat-label>
+    <input matInput formControlName="detalle" required />
+    <mat-error *ngIf="transactionForm.controls['detalle']?.hasError('required')">
+      El detalle es requerido
+    </mat-error>
+  </mat-form-field>
+
+  <button mat-button color="primary" type="submit" [disabled]="transactionForm.invalid">
+    {{ isEditMode ? 'Actualizar Transacción' : 'Crear Transacción' }}
+  </button>
 </form>

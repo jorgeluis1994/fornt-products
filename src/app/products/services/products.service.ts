@@ -13,15 +13,15 @@ export class ProductsService {
   constructor() { }
 
   getAllProducts(): Observable<Product[]> {
-      return this._http.get<Product[]>('http://localhost:5217/api/Productos');
+      return this._http.get<Product[]>('http://localhost:5217/api/Producto');
   }
 
   deleteProduct(id: number): Observable<void> {
-    return this._http.delete<void>(`${'http://localhost:5217/api/Productos'}/${id}`);
+    return this._http.delete<void>(`${'http://localhost:5217/api/Producto'}/${id}`);
   }
 
   createProduct(product: Product): Observable<void> {
 
-    return this._http.post<void>('http://localhost:5217/api/Productos/save',product);
+    return this._http.post<void>('http://localhost:5217/api/Producto/save',product);
   }
 }

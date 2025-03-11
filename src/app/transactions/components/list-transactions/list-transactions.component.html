@@ -1,30 +1,17 @@
 <h3 style="text-align: center;">Lista de Transacciones</h3>
 <button mat-raised-button color="primary" (click)="openTransaction()">Crear Transacción</button>
 
-<!-- list-transactions.component.html -->
-<table mat-table [dataSource]="transactions">
-  <!-- Columna ID -->
-  <ng-container matColumnDef="id">
-    <th mat-header-cell *matHeaderCellDef>ID</th>
-    <td mat-cell *matCellDef="let transaction">{{ transaction.id }}</td>
+<table mat-table [dataSource]="dataSource">
+  <!-- Columna ID Producto -->
+  <ng-container matColumnDef="productoId">
+    <th mat-header-cell *matHeaderCellDef>ID Producto</th>
+    <td mat-cell *matCellDef="let transaction">{{ transaction.productoId }}</td>
   </ng-container>
 
-  <!-- Columna Nombre -->
-  <ng-container matColumnDef="nombre">
-    <th mat-header-cell *matHeaderCellDef>Nombre</th>
-    <td mat-cell *matCellDef="let transaction">{{ transaction.nombre }}</td>
-  </ng-container>
-
-  <!-- Columna Precio -->
-  <ng-container matColumnDef="precio">
-    <th mat-header-cell *matHeaderCellDef>Precio</th>
-    <td mat-cell *matCellDef="let transaction">{{ transaction.precio }}</td>
-  </ng-container>
-
-  <!-- Columna Categoría -->
-  <ng-container matColumnDef="categoria">
-    <th mat-header-cell *matHeaderCellDef>Categoría</th>
-    <td mat-cell *matCellDef="let transaction">{{ transaction.categoria }}</td>
+  <!-- Columna Fecha -->
+  <ng-container matColumnDef="fecha">
+    <th mat-header-cell *matHeaderCellDef>Fecha</th>
+    <td mat-cell *matCellDef="let transaction">{{ transaction.fecha | date: 'short' }}</td>
   </ng-container>
 
   <!-- Columna Tipo -->
@@ -39,18 +26,30 @@
     <td mat-cell *matCellDef="let transaction">{{ transaction.cantidad }}</td>
   </ng-container>
 
-  <!-- Actions Column -->
+  <!-- Columna Precio Unitario -->
+  <ng-container matColumnDef="precioUnitario">
+    <th mat-header-cell *matHeaderCellDef>Precio Unitario</th>
+    <td mat-cell *matCellDef="let transaction">{{ transaction.precioUnitario }}</td>
+  </ng-container>
+
+  <!-- Columna Precio Total -->
+  <ng-container matColumnDef="precioTotal">
+    <th mat-header-cell *matHeaderCellDef>Precio Total</th>
+    <td mat-cell *matCellDef="let transaction">{{ transaction.precioTotal }}</td>
+  </ng-container>
+
+  <!-- Columna Detalle -->
+  <ng-container matColumnDef="detalle">
+    <th mat-header-cell *matHeaderCellDef>Detalle</th>
+    <td mat-cell *matCellDef="let transaction">{{ transaction.detalle }}</td>
+  </ng-container>
+
+  <!-- Columna Acciones -->
   <ng-container matColumnDef="actions">
     <th mat-header-cell *matHeaderCellDef>Acciones</th>
     <td mat-cell *matCellDef="let transaction">
-      <!-- Botón para editar la transacción -->
-      <button mat-button color="primary" (click)="editTransaction(transaction)">
-        Editar
-      </button>
-      <!-- Botón para eliminar la transacción -->
-      <button mat-button color="warn" (click)="deleteTransaction(transaction.id)">
-        Eliminar
-      </button>
+      <button mat-button color="primary" (click)="editTransaction(transaction)">Editar</button>
+      <button mat-button color="warn" (click)="deleteTransaction(transaction.id)">Eliminar</button>
     </td>
   </ng-container>
 
@@ -61,11 +60,9 @@
   <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 </table>
 
-<!-- Paginador -->
 <mat-paginator
   [length]="dataSource?.data?.length"
   [pageSize]="5"
   [pageSizeOptions]="[5, 10, 20]"
   aria-label="Seleccionar página"
->
-</mat-paginator>
+></mat-paginator>

@@ -24,6 +24,12 @@ export class TransactionsService {
     createTransaction(transaction: Transaction): Observable<void> {
       return this._http.post<void>('http://localhost:5217/api/Transacciones/save', transaction);
     }
+
+    updateTransaction(transaction: Transaction): Observable<void> {
+      // Asegúrate de incluir el ID de la transacción en la URL
+      return this._http.put<void>(`http://localhost:5217/api/Transacciones/update/${transaction}`, transaction);
+    }
+
 }
 
 

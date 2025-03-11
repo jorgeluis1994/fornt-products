@@ -25,7 +25,8 @@ export class ListTransactionsComponent {
 
   private readonly _transactionsService = inject(TransactionsService);
 
-  displayedColumns: string[] = ['id', 'nombre', 'precio', 'categoria', 'tipo', 'cantidad', 'actions'];
+  displayedColumns: string[] = ['productoId', 'fecha', 'tipo', 'cantidad', 'precioUnitario', 'precioTotal', 'detalle', 'actions'];
+
 
 
   constructor(public dialog: MatDialog) {}
