@@ -44,6 +44,8 @@ export class ListTransactionsComponent {
     this._transactionsService.getAllTransactions().subscribe({
       next: (transactions) => {
         console.log(transactions);
+        this._toastrService.success('Transacción obtenida con éxito');
+
 
         this.transactions = transactions;
         this.dataSource = new MatTableDataSource(this.transactions);
@@ -73,9 +75,8 @@ export class ListTransactionsComponent {
 
     dialogRef.afterClosed().subscribe({
       next: (value) => {
-        if (value) {
-          this.getAllTransactions();
-        }
+        this.getAllTransactions();
+
       },
     });
   }

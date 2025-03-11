@@ -18,7 +18,7 @@ export class TransactionsService {
     }
 
     deleteTransaction(id: number): Observable<void> {
-      return this._http.delete<void>(`${'http://localhost:5217/api/Transacciones'}/${id}`);
+      return this._http.delete<void>(`${'http://localhost:5217/api/Transaccion'}/${id}`);
     }
 
     createTransaction(transaction: Transaction): Observable<void> {
